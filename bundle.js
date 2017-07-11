@@ -25007,6 +25007,12 @@ var _todo_list_item = __webpack_require__(234);
 
 var _todo_list_item2 = _interopRequireDefault(_todo_list_item);
 
+var _todo_form = __webpack_require__(235);
+
+var _todo_form2 = _interopRequireDefault(_todo_form);
+
+var _todo_actions = __webpack_require__(209);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TodoList = function TodoList(_ref) {
@@ -25028,7 +25034,8 @@ var TodoList = function TodoList(_ref) {
       })
       // todos.map((el, idx) => <li key={idx}>{el.title}</li>)
 
-    )
+    ),
+    _react2.default.createElement(_todo_form2.default, { receiveTodo: _todo_actions.receiveTodo })
   );
 };
 
@@ -25073,7 +25080,7 @@ var TodoListItem = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'li',
-        { key: this.props.id },
+        null,
         this.props.todo.title
       );
     }
@@ -25083,6 +25090,75 @@ var TodoListItem = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = TodoListItem;
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(82);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ToDoForm = function (_React$Component) {
+  _inherits(ToDoForm, _React$Component);
+
+  function ToDoForm(props) {
+    _classCallCheck(this, ToDoForm);
+
+    var _this = _possibleConstructorReturn(this, (ToDoForm.__proto__ || Object.getPrototypeOf(ToDoForm)).call(this, props));
+
+    _this.state = {
+      answer: ""
+    };
+    return _this;
+  }
+
+  _createClass(ToDoForm, [{
+    key: "updateState",
+    value: function updateState() {
+      var _this2 = this;
+
+      return function (event) {
+        return _this2.setState({ answer: event.currentTarget.value });
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement("input", { onChange: this.updateState(), value: this.state.answer }),
+        _react2.default.createElement("button", { onClick: function onClick() {
+            return _this3.props.receiveTodo(_this3.props.todo);
+          } })
+      );
+    }
+  }]);
+
+  return ToDoForm;
+}(_react2.default.Component);
+
+exports.default = ToDoForm;
 
 /***/ })
 /******/ ]);
